@@ -10,6 +10,7 @@ namespace MoviewRecommend.DAL.Interfaces
         List<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null);
         TEntity GetSingle(Expression<Func<TEntity, bool>> predicate);
         void Add(TEntity entity);
+        void AddRange(IList<TEntity> entities);
         void Update(TEntity entity);
         DTO.RepositoryResult SaveChanges();
         void Dispose();

@@ -24,7 +24,7 @@ namespace MoviewRecommend.DAL.Repositories
 
         public TEntity GetSingle(Expression<Func<TEntity, bool>> predicate)
         {
-            return _dbSet.AsNoTracking().SingleOrDefault(predicate);
+            return _dbSet.AsNoTracking().FirstOrDefault(predicate);
         }
 
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null)
@@ -39,6 +39,11 @@ namespace MoviewRecommend.DAL.Repositories
         public void Add(TEntity entity)
         {
             _dbSet.Add(entity);
+        }
+
+        public void AddRange(IList<TEntity> entities)
+        {
+            _dbSet.AddRange(entities);
         }
 
         //TODO: Tekbir field Update i için tüm objenin maplenmesine gerek yok. Böyle bir metot hazırlayabiliriz ek olarak.

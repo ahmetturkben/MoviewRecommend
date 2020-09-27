@@ -18,6 +18,8 @@ namespace MoviewRecommend.Service.Infrastructure
             service.AddScoped<IUserService, UserService>();
             service.AddScoped<IMovieService, MovieService>();
             service.AddScoped<INoteService, NoteService>();
+            service.AddScoped<ITheMovieDbService, TheMovieDbService>();
+            service.AddScoped<IEmailService, EmailService>();
 
             service.AddScoped<IUserRepository, UserRepository>();
             service.AddScoped<IMovieRepository, MovieRepository>();

@@ -8,6 +8,6 @@ namespace MoviewRecommend.BLL
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int AverageScore { get; set; }
+        public decimal  AverageScore { get; set; }
     }
 }

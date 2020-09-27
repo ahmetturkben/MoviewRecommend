@@ -49,6 +49,10 @@ namespace MoviewRecommend.Service.Services
             //Oluşturduğumuz tokenı string olarak bir değişkene atıyoruz.
             string generatedToken = tokenHandler.WriteToken(token);
 
+            user.Token = "Bearer " + generatedToken;
+            Update(user);
+            SaveChanges();
+
             //Sonuçlarımızı tuple olarak dönüyoruz.
             return (user.Username, generatedToken);
         }

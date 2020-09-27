@@ -10,6 +10,7 @@ namespace MoviewRecommend.Service.Interfaces
         BLEntity GetSingle(Expression<Func<TEntity, bool>> predicate);
         List<BLEntity> GetAll(Expression<Func<TEntity, bool>> predicate = null);
         void Add(BLEntity entity);
+        void AddRange(IList<BLEntity> entities);
         void Update(BLEntity entity);
         void Remove(BLEntity entity);
         BLL.BusinessResult SaveChanges();

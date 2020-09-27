@@ -43,6 +43,11 @@ namespace MoviewRecommend.Service.Services
             SetCreatedDetail(entity);
             repo.Add(_mapper.Map<TEntity>(entity));
         }
+        public void AddRange(IList<BLEntity> entities)
+        {
+            repo.AddRange(_mapper.Map<IList<TEntity>>(entities));
+        }
+
         public void Update(BLEntity entity)
         {
             SetModifiedDetail(entity);

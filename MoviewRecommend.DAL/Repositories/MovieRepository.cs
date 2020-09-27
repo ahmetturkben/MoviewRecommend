@@ -17,7 +17,7 @@ namespace MoviewRecommend.DAL.Repositories
 
         public override Expression<Func<Movie, bool>> SearchFilters(Movie obj)
         {
-            throw new NotImplementedException();
+            return (x => x.Id == obj.Id);
         }
     }
 }

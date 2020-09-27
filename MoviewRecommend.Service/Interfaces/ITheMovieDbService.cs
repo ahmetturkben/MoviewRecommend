@@ -1,4 +1,5 @@
-﻿using MoviewRecommend.BLL.TheMovieDb;
+﻿using MoviewRecommend.BLL;
+using MoviewRecommend.BLL.TheMovieDb;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -8,6 +9,7 @@ namespace MoviewRecommend.Service.Interfaces
 {
     public interface ITheMovieDbService
     {
-        List<TheMovieDbModel> GetAll(Expression<Func<TheMovieDbModel, bool>> predicate = null);
+        List<TheMovie> GetAll(Expression<Func<TheMovieDbModel, bool>> predicate = null);
+        List<Movie> MappingModel(List<TheMovie> movies);
     }
 }
