@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using MoviewRecommend.API.Models;
-using MoviewRecommend.BLL;
 using MoviewRecommend.Service.Interfaces;
 
 namespace MoviewRecommend.API.Controllers
