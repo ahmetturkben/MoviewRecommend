@@ -24,6 +24,7 @@ namespace MoviewRecommend.Service.Tasks
             _logger = logger;
         }
 
+        //uygulama ilk host edildiğinde buradan bir kere başlar.
         public override Task StartAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("GetTheMovieAllScheduleTask 1 starts.");
@@ -50,7 +51,7 @@ namespace MoviewRecommend.Service.Tasks
                         _movieService.Update(movie);
                         continue;
                     }
-                    _movieService.Add(movie);
+                    _movieService.Add(item);
                 }
 
                 _movieService.SaveChanges();
@@ -59,6 +60,7 @@ namespace MoviewRecommend.Service.Tasks
             return base.StartAsync(cancellationToken);
         }
 
+        //schedule olarak bu metota girer.
         public override Task DoWork(CancellationToken cancellationToken)
         {
             _logger.LogInformation($"{DateTime.Now:hh:mm:ss} GetTheMovieAllScheduleTask 1 is working.");
@@ -70,8 +72,18 @@ namespace MoviewRecommend.Service.Tasks
                 var movies = _theMovieDbService.GetAll();
                 var mappingModel = _theMovieDbService.MappingModel(movies);
 
-                _movieService.AddRange(mappingModel);
-                _movieService.SaveChanges();
+                foreach (var item in mappingModel)
+                {
+                    var movie = _movieService.GetSingle(x => x.Name == item.Name);
+                    if (movie != null)
+                    {
+                        _movieService.Update(movie);
+                        continue;
+                    }
+                    _movieService.Add(item);
+                }
+
+                _movieService.SaveChanges(); _movieService.SaveChanges();
             }
             return Task.CompletedTask;
         }

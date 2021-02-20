@@ -67,11 +67,11 @@ namespace MoviewRecommend.API
 
             Service.Infrastructure.DependencyRegistrar.Registrar(services, Configuration.GetConnectionString("Mssql-Dev"));
 
-            //services.AddCronJob<GetTheMovieAllScheduleTask>(c =>
-            //{
-            //    c.TimeZoneInfo = TimeZoneInfo.Local;
-            //    c.CronExpression = @"*/5 * * * *";
-            //});
+            services.AddCronJob<GetTheMovieAllScheduleTask>(c =>
+            {
+                c.TimeZoneInfo = TimeZoneInfo.Local;
+                c.CronExpression = @"*/5 * * * *";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
